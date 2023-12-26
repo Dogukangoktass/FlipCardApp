@@ -27,7 +27,11 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+      body: category == null
+          ? Center(
+        child: CircularProgressIndicator(), // Loading indicator
+      )
+          :  ListView.builder(
           itemCount: category!.length,
           itemBuilder: (context, index){
             return Center(

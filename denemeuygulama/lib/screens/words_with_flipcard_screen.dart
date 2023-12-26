@@ -11,14 +11,15 @@ class _FlipCardViewState extends State<FlipCardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: Center(
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // silinebilir
-        children: [
-          FlipCardWidget()
-        ],
-      ),),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [
+            FlipCardWidget()
+          ],
+        ),),
+      ),
 
 
 

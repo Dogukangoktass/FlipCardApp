@@ -35,3 +35,24 @@ class User {
     "password": password,
   };
 }
+
+class UserLoginVM{
+  String? eMail;
+  String? password;
+
+  UserLoginVM({
+    this.eMail,
+    this.password,
+  });
+
+  factory UserLoginVM.fromJson(Map<String, dynamic> json) => UserLoginVM(
+    eMail: json["eMail"],
+    password: json["password"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "eMail": eMail,
+    "password": password,
+  };
+
+}
