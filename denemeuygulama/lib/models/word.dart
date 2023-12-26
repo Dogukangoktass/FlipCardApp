@@ -9,7 +9,7 @@ List<Word> wordFromJson(String str) => List<Word>.from(json.decode(str).map((x) 
 String wordToJson(List<Word> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Word {
-  int? wordId;
+  int? WordId;
   int? categoryId;
   String? wordTr;
   String? wordEn;
@@ -17,7 +17,7 @@ class Word {
   String? sentenceTr;
 
   Word({
-     this.wordId,
+     this.WordId,
      this.categoryId,
      this.wordTr,
      this.wordEn,
@@ -26,7 +26,7 @@ class Word {
   });
 
   factory Word.fromJson(Map<String, dynamic> json) => Word(
-    wordId: json["wordId"],
+    WordId: json["wordId"],
     categoryId: json["categoryId"],
     wordTr: json["wordTr"],
     wordEn: json["wordEn"],
@@ -35,7 +35,7 @@ class Word {
   );
 
   Map<String, dynamic> toJson() => {
-    "wordId": wordId,
+    "wordId": WordId,
     "categoryId": categoryId,
     "wordTr": wordTr,
     "wordEn": wordEn,

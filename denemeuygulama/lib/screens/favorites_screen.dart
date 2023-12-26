@@ -35,40 +35,55 @@ class _FavoritesViewState extends State<FavoritesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: favorites!.length,
-        itemBuilder: (context, index) {
-          return Center(
-            child: Card(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top:10.0),
-                    child: ListTile(
-                      title: Column(
-                        children: [
-                          Row(
-                            children: [
-                             Spacer(),
-                              Text(favorites![index].wordTr.toString(),),
-                             Spacer(),
-                             Text(favorites![index].wordEn.toString(),),
-                              Spacer()
-                            ],
-                          ),
-                          Text(favorites![index].sentenceEn.toString(),),
-                          Text(favorites![index].sentenceTr.toString(),),
-                            ],
-                          ),
-                      ),
-                  ),
-
-                ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.yellow,
+              Colors.red,
+              Color(0xFFfe17763),
+              Color(0xFFe17763),
+              Color(0xFF68998c),
+            ],
+            stops: [0.1, 0.4, 0.6, 0.8, 1],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: favorites!.length,
+          itemBuilder: (context, index) {
+            return Center(
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top:10.0),
+                      child: ListTile(
+                        title: Column(
+                          children: [
+                            Row(
+                              children: [
+                               Spacer(),
+                                Text(favorites![index].wordTr.toString(),),
+                               Spacer(),
+                               Text(favorites![index].wordEn.toString(),),
+                                Spacer()
+                              ],
+                            ),
+                            Text(favorites![index].sentenceEn.toString(),),
+                            Text(favorites![index].sentenceTr.toString(),),
+                              ],
+                            ),
+                        ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

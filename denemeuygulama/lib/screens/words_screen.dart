@@ -5,6 +5,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../components/my_card_button.dart';
+import '../services/favorite_api.dart';
 
 class WordView extends StatefulWidget {
   const WordView({super.key, required this.userId});
@@ -31,6 +32,24 @@ class _WordViewState extends State<WordView> {
         words =mWords;
       }
     });
+  }
+
+  void favoriteAdd(int wordId) async
+  {
+    final response = await http.post(
+      Uri.parse('https://webapi20231207005716.azurewebsites.net/api/Favorite/PostFavorite?userId=${widget.userId}&wordId=${wordId}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if(response.statusCode==200 ||response.statusCode==201 ||response.statusCode==204)
+    {
+      print(response.body);
+      var jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
+    }
+    print(response.statusCode);
+    print("favori ekleme başarılı");
   }
 
   void clickNext() {
@@ -94,7 +113,15 @@ class _WordViewState extends State<WordView> {
                         ),
                         Spacer(),
                         MyCardButton(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              favoriteAdd(words![id].WordId!);
+                             print("word ID  :");
+                              print(words![id].WordId!.toString());
+                            });
+                            clickNext();
+                            // buraya listedeki kelimenin wordId gelecek
+                          },
                           icon: Icons.favorite_border_outlined,
                           color: Colors.grey.shade200.withOpacity(0.5),
                         ),

@@ -19,6 +19,30 @@ class FavoriteApi{
     else {throw Exception('failed to load categories');}
   }
 
+  Future addFavorite(int userId, int wordId) async{
+    Map data={
+      "wordId": wordId,
+      "userId": userId,
+    };
+    var body = jsonEncode(data);
+    final response = await http.post(Uri.parse("uri"), body: body);
+    print(response.body);
+  }
+  /*  Map<String, dynamic> requestBody = {
+      "favoriteWordId": 0,
+      "wordId": wordId,
+      "userId": userId,
+      "words": {
+        "wordId": 0,
+        "categoryId": 0,
+        "wordTr": wordTr,
+        "wordEn": wordEn,
+        "sentenceEn": sentenceEn,
+        "sentenceTr": sentenceTr,
+      },
+    };*/
+
+
 
 
 
