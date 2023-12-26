@@ -51,6 +51,23 @@ class _WordViewState extends State<WordView> {
     print(response.statusCode);
     print("favori ekleme başarılı");
   }
+  void learnWordAdd(int wordId) async
+  {
+    final response = await http.post(
+      Uri.parse('https://webapi20231207005716.azurewebsites.net/api/Learn/GetLearnWordsWithUser?userId=${widget.userId}&wordId=${wordId}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if(response.statusCode==200 ||response.statusCode==201 ||response.statusCode==204)
+    {
+      print(response.body);
+      var jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
+    }
+    print(response.statusCode);
+    print("learn ekleme başarılı");
+  }
 
   void clickNext() {
     setState(() {
@@ -107,7 +124,12 @@ class _WordViewState extends State<WordView> {
                         ),
                         Spacer(),
                         MyCardButton(
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              learnWordAdd(words![id].WordId!);
+                              clickNext();
+                            });
+                          },
                           icon: Icons.question_mark_outlined,
                           color: Colors.grey.shade200.withOpacity(0.5),
                         ),
@@ -116,8 +138,6 @@ class _WordViewState extends State<WordView> {
                           onTap: () {
                             setState(() {
                               favoriteAdd(words![id].WordId!);
-                             print("word ID  :");
-                              print(words![id].WordId!.toString());
                             });
                             clickNext();
                             // buraya listedeki kelimenin wordId gelecek

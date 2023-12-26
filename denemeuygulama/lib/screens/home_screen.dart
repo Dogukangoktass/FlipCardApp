@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'categories_screen.dart';
 import 'favorites_screen.dart';
+import 'learn_screen.dart';
 
 
 class HomeView extends StatefulWidget {
@@ -59,7 +60,7 @@ Widget _buildScreen(int index) {
     case 1:
       return FavoritesView(userId: 1);
     case 2:
-      return CategoriesView();
+      return LearnView(userId: 1,);
     case 3:
       return CategoriesView();
     default:

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../models/favoriteword.dart';
-import '../services/favorite_api.dart';
+import '../models/learnword.dart';
+import '../services/learn_api.dart';
 
-class FavoritesView extends StatefulWidget {
-  const FavoritesView({super.key, required this.userId});
+class LearnView extends StatefulWidget {
+  const LearnView({super.key, required this.userId});
   final int userId;
 
   @override
-  State<FavoritesView> createState() => _FavoritesViewState();
+  State<LearnView> createState() => _LearnViewState();
 }
 
-class _FavoritesViewState extends State<FavoritesView> {
-  List<FavoriteWord>? favorites;
+class _LearnViewState extends State<LearnView> {
+  List<LearnWord>? getLearn;
 
   void initState() {
     super.initState();
@@ -20,10 +21,10 @@ class _FavoritesViewState extends State<FavoritesView> {
     getData();
   }
   getData() async{
-    var mWords =await FavoriteApi().getFavorites(widget.userId);
+    var mWords =await LearnApi().getLearns(widget.userId);
     setState(() {
       if(mounted){
-        favorites =mWords;
+        getLearn =mWords;
       }
     });
   }
@@ -47,7 +48,7 @@ class _FavoritesViewState extends State<FavoritesView> {
           ),
         ),
         child: ListView.builder(
-          itemCount: favorites!.length,
+          itemCount: getLearn!.length,
           itemBuilder: (context, index) {
             return Center(
               child: Card(
@@ -61,18 +62,18 @@ class _FavoritesViewState extends State<FavoritesView> {
                           children: [
                             Row(
                               children: [
-                               Spacer(),
-                                Text(favorites![index].wordTr.toString(),),
-                               Spacer(),
-                               Text(favorites![index].wordEn.toString(),),
+                                Spacer(),
+                                Text(getLearn![index].wordTr.toString(),),
+                                Spacer(),
+                                Text(getLearn![index].wordEn.toString(),),
                                 Spacer()
                               ],
                             ),
-                            Text(favorites![index].sentenceEn.toString(),),
-                            Text(favorites![index].sentenceTr.toString(),),
-                              ],
-                            ),
+                            Text(getLearn![index].sentenceEn.toString(),),
+                            Text(getLearn![index].sentenceTr.toString(),),
+                          ],
                         ),
+                      ),
                     ),
                   ],
                 ),
