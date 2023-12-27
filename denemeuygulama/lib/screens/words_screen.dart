@@ -4,6 +4,7 @@ import 'package:denemeuygulama/services/word_api.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../components/drawer.dart';
 import '../components/my_card_button.dart';
 import '../services/favorite_api.dart';
 
@@ -80,6 +81,21 @@ class _WordViewState extends State<WordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerView(userId: widget.userId),
+      appBar: AppBar(
+        backgroundColor: Colors.yellow,
+        automaticallyImplyLeading: false,
+        actions: [
+          Builder(
+              builder: (context) {
+                return IconButton(onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                    icon: Icon(Icons.menu_rounded, color: Colors.red,));
+              }
+          ),
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -88,11 +104,11 @@ class _WordViewState extends State<WordView> {
               Colors.red,
               Color(0xFFfe17763),
               Color(0xFFe17763),
-              Color(0xFF68998c),
+              Color(0xffb3ead8),
             ],
             stops: [0.1, 0.4, 0.6, 0.8, 1],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: ListView.builder(

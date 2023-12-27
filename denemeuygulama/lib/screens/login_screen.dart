@@ -47,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
         } else {
           print('Dönen veri beklenen formatta değil.');
         }
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>  WordView
         (userId: userId)));
       }
     print(response.statusCode);

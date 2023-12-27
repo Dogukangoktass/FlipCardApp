@@ -1,19 +1,20 @@
 import 'package:denemeuygulama/screens/words_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../components/drawer.dart';
 import 'categories_screen.dart';
 import 'favorites_screen.dart';
 import 'learn_screen.dart';
 
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key, required this.userId});
+class HomeView1 extends StatefulWidget {
+  const HomeView1({super.key, required this.userId});
   final int userId;
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeView1> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<HomeView1> {
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -24,10 +25,28 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerView(userId: widget.userId),
+      appBar: AppBar(
+        backgroundColor: Colors.yellow,
+        automaticallyImplyLeading: false,
+        actions: [
+          Builder(
+              builder: (context) {
+                return IconButton(onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                    icon: Icon(Icons.menu_rounded, color: Colors.red,));
+              }
+          ),
+        ],
+      ),
+
       body: Center(
       child: _buildScreen(_selectedIndex, widget.userId),
     ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.yellow, // Bottom Navigation Bar'ın rengi
+
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Colors.red,),
@@ -62,7 +81,7 @@ Widget _buildScreen(int index, int userId) {
     case 2:
       return LearnView(userId: userId);
     case 3:
-      return CategoriesView();
+      return CategoriesView(userId: userId);
     default:
       return WordView(userId: userId);
   }

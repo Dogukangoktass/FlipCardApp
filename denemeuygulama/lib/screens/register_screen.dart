@@ -97,6 +97,7 @@ class _RegisterViewState extends State<RegisterView> {
                   register(emailController.text.toString(), passwordController.text.toString(),firstNameController.text.toString(),lastNameController.text.toString());
                 } ,
                 text: "Register",
+                color: Colors.green,
               ),
 
               const SizedBox(height: 40),
