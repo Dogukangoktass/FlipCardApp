@@ -60,12 +60,7 @@ class UserApi{
   } */
 
 
-
-
-
-
-
-
+// https://localhost:44381/api/User/Register?userFirstName=denemeapi&userLastName=goktas&eMail=g%40gmail.com&password=123
 
   Future<User> UserRegister(String email, String password, String firstName, String lastName)
    async {
@@ -76,11 +71,12 @@ class UserApi{
       'password':password,
     };
 
-    final uri=Uri.parse("https://webapi20231207005716.azurewebsites.net/api/User/Register");
-    final response=await http.post(uri, body: request);
-
-    if(response.statusCode==201) return User.fromJson(json.decode(response.body));
-
+    final uri=Uri.parse("https://webapi20231207005716.azurewebsites.net/api/User/Register?userFirstName=${firstName}&userLastName=${lastName}&eMail=${email}&password=${password}");
+    // final uri=Uri.parse("https://webapi20231207005716.azurewebsites.net/api/User/Register?userFirstName=flipcard&userLastName=uygulama&eMail=a@gmail.com&password=123");
+    final response=await http.post(uri);
+    if(response.statusCode==200) {
+      return User.fromJson(json.decode(response.body));
+    }
     else throw Exception("failed to register");
   }
 

@@ -54,7 +54,7 @@ class _WordViewState extends State<WordView> {
   void learnWordAdd(int wordId) async
   {
     final response = await http.post(
-      Uri.parse('https://webapi20231207005716.azurewebsites.net/api/Learn/GetLearnWordsWithUser?userId=${widget.userId}&wordId=${wordId}'),
+      Uri.parse('https://webapi20231207005716.azurewebsites.net/api/Learn/PostLearn?userId=${widget.userId}&wordId=${wordId}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -182,66 +182,69 @@ class FlipCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      height: 500,
-      child: FlipCard(
-        direction: FlipDirection.HORIZONTAL,
-        front: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.red.shade200.withOpacity(0.5),
+    return Padding(
+      padding: const EdgeInsets.only(top:40.0),
+      child: Container(
+        width: 300,
+        height: 500,
+        child: FlipCard(
+          direction: FlipDirection.HORIZONTAL,
+          front: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Colors.red.shade200.withOpacity(0.5),
+                ),
               ),
-            ),
-            Text(
-              textEn,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Text(
-                sentenceEn,
+              Text(
+                textEn,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),
               ),
-            ),
-          ],
-        ),
-        back: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.blue.shade200.withOpacity(0.5),
+              Padding(
+                padding: const EdgeInsets.only(top: 100.0),
+                child: Text(
+                  sentenceEn,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
               ),
-            ),
-            Text(
-              textTr,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+            ],
+          ),
+          back: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  color: Colors.blue.shade200.withOpacity(0.5),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100.0),
-              child: Text(
-                sentenceTr,
+              Text(
+                textTr,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 100.0),
+                child: Text(
+                  sentenceTr,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

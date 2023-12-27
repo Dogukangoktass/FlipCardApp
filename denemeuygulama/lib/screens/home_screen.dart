@@ -25,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-      child: _buildScreen(_selectedIndex),
+      child: _buildScreen(_selectedIndex, widget.userId),
     ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -53,17 +53,17 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-Widget _buildScreen(int index) {
+Widget _buildScreen(int index, int userId) {
   switch (index) {
     case 0:
-      return WordView(userId: 1);
+      return WordView(userId: userId);
     case 1:
-      return FavoritesView(userId: 1);
+      return FavoritesView(userId: userId);
     case 2:
-      return LearnView(userId: 1,);
+      return LearnView(userId: userId);
     case 3:
       return CategoriesView();
     default:
-      return WordView(userId: 1);
+      return WordView(userId: userId);
   }
 }

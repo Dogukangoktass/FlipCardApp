@@ -27,11 +27,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: category == null
-          ? Center(
-        child: CircularProgressIndicator(), // Loading indicator
-      )
-          :  Container(
+      body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -46,7 +42,11 @@ class _CategoriesViewState extends State<CategoriesView> {
             end: Alignment.bottomLeft,
           ),
         ),
-            child: ListView.builder(
+            child: category == null
+                ? Center(
+              child: CircularProgressIndicator(), // Loading indicator
+            )
+                : ListView.builder(
             itemCount: category!.length,
             itemBuilder: (context, index){
               return Center(

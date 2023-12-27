@@ -47,7 +47,12 @@ class _LearnViewState extends State<LearnView> {
             end: Alignment.bottomLeft,
           ),
         ),
-        child: ListView.builder(
+        child: getLearn == null || getLearn!.isEmpty ? Center(
+          child: Text("Öğrenilecek Kelime Yok", style: TextStyle(
+              fontSize: 30,
+              color: Colors.white70
+          ),),)
+            : ListView.builder(
           itemCount: getLearn!.length,
           itemBuilder: (context, index) {
             return Center(

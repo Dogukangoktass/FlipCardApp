@@ -64,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
           child: ListView(
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 75),
 
               const Icon(
                 Icons.lock,
@@ -158,11 +158,16 @@ class _LoginViewState extends State<LoginView> {
                 children: [
                   Text("Not a member?", style: TextStyle(color: Colors.grey[700]),),
                   const SizedBox(width: 5),
-                  Text("Register now",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold
-                    ),)
+                  new GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  RegisterView()));
+                    },
+                    child: Text("Register now",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold
+                      ),),
+                  )
                 ],
               )
 

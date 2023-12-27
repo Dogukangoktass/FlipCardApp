@@ -46,7 +46,12 @@ class _FavoritesViewState extends State<FavoritesView> {
             end: Alignment.bottomLeft,
           ),
         ),
-        child: ListView.builder(
+        child: favorites == null || favorites!.isEmpty ? Center(
+          child: Text("Favoriler Kelime Yok", style: TextStyle(
+            fontSize: 30,
+            color: Colors.white70
+          ),),)
+        :  ListView.builder(
           itemCount: favorites!.length,
           itemBuilder: (context, index) {
             return Center(
