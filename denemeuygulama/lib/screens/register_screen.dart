@@ -100,6 +100,8 @@ class _RegisterViewState extends State<RegisterView> {
                 color: Colors.green,
               ),
 
+
+
               const SizedBox(height: 40),
 
               SizedBox(height: 50),

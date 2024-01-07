@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'English Learn App',
       theme: ThemeData(
         useMaterial3: true,
       ),

@@ -114,17 +114,24 @@ class _LoginViewState extends State<LoginView> {
 
               const SizedBox(height: 25),
 
-              ElevatedButton(onPressed: () async{
-               String email= emailController.text;
-                String password= passwordController.text;
-                girisYap(email,password);
-
-              }
-                  , child: Text("Giriş")),
-
-
-              const SizedBox(height: 40),
-
+              Container(
+                height: 70,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:20.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      String email = emailController.text;
+                      String password = passwordController.text;
+                      girisYap(email, password);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green, // Yeşil renk
+                    ),
+                    child: Text("Giriş"),
+                  ),
+                ),
+              ),
+                SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(children: [
